@@ -2,14 +2,14 @@ let Controller = require("./Controller");
 let Car = require('./../Models/Car');
 module.exports = class IndexController  extends Controller { 
     //the constructor of controller only takes Dependencies 
-    constructor(index,Arg3){
+    constructor(req){
         super();
-        console.log("calling");
         this.car = new Car() ;
     }
 
-    index(res,asd){
-        return this.car.getCars();
+    index(Request,asd){
+        console.log(Request)
+        return Request.params   ;
     }
 
     

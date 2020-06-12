@@ -19,10 +19,10 @@ let index = 'index';
 
 
 
-router.get('/',function(req,res,nx){
+router.get('/:id',function(req,res,nx){
   //so we will have our pass two parameters one with response and the other with
-  //controller and the method to resolve 
- BaseRouter.render(res,"IndexController@index",'send');
+  //controller and the method to resolve
+ BaseRouter.render(res,req,"IndexController@index",'json');
 
 });
 

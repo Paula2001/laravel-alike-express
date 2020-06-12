@@ -5,30 +5,35 @@ let fileOperations = require('./../core/FileOperations');
 
 module.exports = class BaseRouter{ 
 
-    static resolveControllerMethod(controller_method){
+    static resolveControllerMethod(req,controller_method){
         let matches = controller_method.match(/(^\w+)@(\w+$)/);
         let controller_path = path.join(global.appRoot, 'app/Controllers', `${matches[1]}.js`);
-        let Controller = require(controller_path);
-        
 
-        let controller = new Controller("Asdf","asdf"); //we will need to create dependency injection . 
+        //autoload the controller
+        let Controller = require(controller_path);
+
+        let controller = new Controller();
+        //we will need to create dependency injection .
 
         //get the arguments 
         let constructorDependencies = BaseRouter.resolveArgs(controller.constructor);
 
-        //we will need to create dependency injection . 
+        //we will need to create dependency injection .
         constructorDependencies.forEach(dependency => {
             BaseRouter.createDependency(dependency);
             //create instance of these dependencies 
         });
-        console.log(matches[2]);
-        return controller[matches[2]]("Asdf");
-        // we will need to create autoloader 
+
+
+        console.log(req);
+        return controller[matches[2]](req); //here we need to pass the request parameters
+        // we will need to create autoloader to the dependencies
+
+
     }
-    static render(res ,controller_method,response_type){
-        let resolve = BaseRouter.resolveControllerMethod(controller_method); 
-        console.log(process.env.PORT);
-    
+    static render(res ,req,controller_method,response_type){
+        let resolve = BaseRouter.resolveControllerMethod(req,controller_method);
+        console.log(resolve);
         res[response_type](resolve);
     }
 

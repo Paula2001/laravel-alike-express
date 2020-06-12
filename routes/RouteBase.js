@@ -8,9 +8,7 @@ module.exports = class BaseRouter{
         return path.join("asd", 'Controllers', `${matches[1]}.js`); 
     }
     static render(res ,controller_method,response_type){
-        let resolve = BaseRouter.resolveControllerMethod(controller_method); 
-        console.log(process.env.PORT);
-    
+        let resolve = BaseRouter.resolveControllerMethod(controller_method);
         res[response_type](resolve);
     }
 }
