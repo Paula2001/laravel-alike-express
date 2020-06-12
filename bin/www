@@ -3,12 +3,10 @@
 /**
  * Module dependencies.
  */
-
 var app = require('../app');
 var debug = require('debug')('exp:server');
 var http = require('http');
 require('dotenv').config();
-// global.PATH = ;
 /**
  * Get port from environment and store in Express.
  */

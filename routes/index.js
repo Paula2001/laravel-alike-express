@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-let BaseRouter = require('./RouteBase');
+let BaseRouter = require('./BaseRoute');
 //these two lines are biohezard .. 
 
 let path = './../app/Controllers/IndexController'; 
@@ -22,7 +22,8 @@ let index = 'index';
 router.get('/',function(req,res,nx){
   //so we will have our pass two parameters one with response and the other with
   //controller and the method to resolve 
- BaseRouter.render(res,"Controller@Function",'send');
+ BaseRouter.render(res,"IndexController@index",'send');
+
 });
 
 module.exports = router;
