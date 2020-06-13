@@ -25,7 +25,6 @@ module.exports = class BaseRouter{
         });
 
 
-        console.log(req);
         return controller[matches[2]](req); //here we need to pass the request parameters
         // we will need to create autoloader to the dependencies
 
@@ -33,7 +32,6 @@ module.exports = class BaseRouter{
     }
     static render(res ,req,controller_method,response_type){
         let resolve = BaseRouter.resolveControllerMethod(req,controller_method);
-        console.log(resolve);
         res[response_type](resolve);
     }
 
