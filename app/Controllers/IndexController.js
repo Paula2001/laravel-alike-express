@@ -9,7 +9,7 @@ module.exports = class IndexController  extends Controller {
     }
 
     index(Request,asd){
-        this.log.saveLogs();
+        this.log.saveLog(Request);
         return Request.params   ;
     }
 }

@@ -9,17 +9,18 @@ module.exports = class Car extends BaseModel{
                 type:String
             },
         });
-        console.log(schema);
-
     }
 
-
-
-    saveLogs(){
-        console.log(schema);
+    saveLog(){
         let log = new schema({ownerId : '123'});
         log.save(function (err) {
             // saved!
         })
     }
+
+    getLogs(){
+
+    }
+
+
 }
